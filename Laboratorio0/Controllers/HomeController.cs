@@ -27,15 +27,13 @@ namespace Laboratorio0.Controllers
                 var nuevoCliente = new Models.Customers
                 {
                     Name=collection["Name"],
-                    Surname=collection["Apelli"],
-                    Phone=Convert.ToInt32(collection["Tel"]),
-                    Description=collection["Desc"]
+                    Surname=collection["Surname"],
+                    Phone=Convert.ToInt32(collection["Phone"]),
+                    Description=collection["Description"]
                 };
 
                 Singleton.Instance.ClientList.Add(nuevoCliente);
-
-
-                return View();
+                return RedirectToAction(nameof(Index));
 
             }
             catch 
@@ -46,7 +44,7 @@ namespace Laboratorio0.Controllers
 
         public ActionResult Privacy()
         {
-            return View();
+            return View(Singleton.Instance.ClientList);
         }
         public ActionResult Error()
         {
