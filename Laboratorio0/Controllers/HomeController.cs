@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Laboratorio0.Helpers;
  
 
 namespace Laboratorio0.Controllers
@@ -23,13 +24,17 @@ namespace Laboratorio0.Controllers
         {
             try
             {
-                var nuevoCliente = new Models.Cliente
+                var nuevoCliente = new Models.Customers
                 {
-                    Nombre=collection["Name"],
-                    Apellido=collection["Apelli"],
-                    Telefono=Convert.ToInt32(collection["Tel"]),
-                    Descripcion=collection["Desc"]
+                    Name=collection["Name"],
+                    Surname=collection["Apelli"],
+                    Phone=Convert.ToInt32(collection["Tel"]),
+                    Description=collection["Desc"]
                 };
+
+                Singleton.Instance.ClientList.Add(nuevoCliente);
+
+
                 return View();
 
             }
