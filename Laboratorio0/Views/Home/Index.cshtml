@@ -6,7 +6,7 @@
 
 <h1>Crear</h1>
 
-<h4>Cliente</h4>
+<h4>Customers</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -33,12 +33,15 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Crear" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
+<p>
+    <a asp-action="Privacy">View List</a>
+</p>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
