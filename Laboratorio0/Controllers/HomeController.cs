@@ -24,7 +24,7 @@ namespace Laboratorio0.Controllers
         {
             try
             {
-                var nuevoCliente = new Models.Customers
+                var newCustomer = new Models.Customers
                 {
                     Name=collection["Name"],
                     Surname=collection["Surname"],
@@ -32,7 +32,7 @@ namespace Laboratorio0.Controllers
                     Description=collection["Description"]
                 };
 
-                Singleton.Instance.ClientList.Add(nuevoCliente);
+                Singleton.Instance.ClientList.Add(newCustomer);
                 return RedirectToAction(nameof(Index));
 
             }
