@@ -52,17 +52,41 @@ namespace Laboratorio0.Controllers
         public ActionResult ListName()
         {
 
-            CompareCustomers DelegateOrder = new CompareCustomers(Customers.CompareByName);
-            Customers.SortCliente(Singleton.Instance.ClientList,DelegateOrder);
-            
+            List<Customers> NameList = new List<Customers>();
+            for (int i = 0; i < Singleton.Instance.ClientList.Count; i++)
+            {
+                for (int j = 0; j < Singleton.Instance.ClientList.Count - 1; j++)
+                {
+                    if (Singleton.Instance.ClientList[j].Name.CompareTo(Singleton.Instance.ClientList[j + 1].Name) > 0)
+                    {
+                        NameList.Add(Singleton.Instance.ClientList[j]);
+                        Singleton.Instance.ClientList[j] = Singleton.Instance.ClientList[j + 1];
+                        Singleton.Instance.ClientList[j + 1] = NameList[0];
+                    }
+                    NameList.Clear();
+                }
+            }
+
             return RedirectToAction(nameof(Privacy));
 
         }
 
         public ActionResult SurnameList()
         {
-            CompareCustomers DelegateOrder = new CompareCustomers(Customers.CompareBySurname);
-            Customers.SortCliente(Singleton.Instance.ClientList, DelegateOrder);
+            List<Customers> NameList = new List<Customers>();
+            for (int i = 0; i < Singleton.Instance.ClientList.Count; i++)
+            {
+                for (int j = 0; j < Singleton.Instance.ClientList.Count - 1; j++)
+                {
+                    if (Singleton.Instance.ClientList[j].Surname.CompareTo(Singleton.Instance.ClientList[j + 1].Surname) > 0)
+                    {
+                        NameList.Add(Singleton.Instance.ClientList[j]);
+                        Singleton.Instance.ClientList[j] = Singleton.Instance.ClientList[j + 1];
+                        Singleton.Instance.ClientList[j + 1] = NameList[0];
+                    }
+                    NameList.Clear();
+                }
+            }
 
             return RedirectToAction(nameof(Privacy));
         }
