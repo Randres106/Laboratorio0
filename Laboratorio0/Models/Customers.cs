@@ -33,7 +33,7 @@ namespace Laboratorio0.Models
             {
                 for (int j = 0; j < ListClient.Count - 1; j++)
                 {
-                    if (Convert.ToInt32(Condicion(ListClient[j],ListClient[j+1])) > 0)
+                    if (Convert.ToInt32(Condicion.DynamicInvoke(ListClient[j],ListClient[j+1])) > 0)
                     {
                         Customers Nuevo = ListClient[j];
                         ListClient[j] = ListClient[j + 1];
